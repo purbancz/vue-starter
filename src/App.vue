@@ -1,40 +1,48 @@
 <template>
-	<div v-if="log == false">
-		<h1>Witaj w systemie do zapisów na zajęcia</h1>
-		<p>Zaloguj się emailem <input type="email" v-model="email">
-		<button @click="login()">Wchodzę</button></p>
-		
-		
+	<div v-if="isAuthenticated == false">
+	<h1>Witaj w systemie do zapisów na zajęcia</h1>
+		<login-form @login="logMeIn($event)" :button-label="'Wejdź'"></login-form>
+		<login-form @login="logMeIn($event)" :button-label="'Wleć'"></login-form>
+		<login-form @login="logMeIn($event)" :button-label="'Zaloguj się jak człowiek'"></login-form>
+		<login-form @login="logMeIn($event)" ></login-form>
 	</div>
 	<div v-else>
-		<h1>Witaj {{ email }}</h1>
-		<a href=""  @click="logout()">Wyloguj</a>
+		<h1>Witaj, {{ authenticatedUsername }}</h1>
+		<!-- <a @click="logMeOut()">Wyloguj</a> -->
+		
+		<logged-in logout="logMeOut()"></logged-in>
+		
 	</div>
 </template>
 
 <script>
 
+import LoginForm from "./components/LoginForm";
+import LoggedIn from "./components/LoggedIn";
+
 import "milligram";
 
 
+
 export default {
+	components: {LoginForm, LoggedIn},
 	data() {
 		  return {
 		    email: '',
 		    password: '',
-		    log: false
+		    isAuthenticated: false
 		  };
 	},
 	methods: {
-		alertMyEmail() {
-			alert(this.email);
+		logMeOut() {
+			this.isAuthenticated = false;
+			this.email = '';
 		},
-		login() {
-			this.log = true;
-		},
-		logout() {
-			this.log = false;
-		},
+		
+		logMeIn(username) {
+			this.isAuthenticated = true;
+			this.authenticatedUsername = username;
+			}
 	}
 	
 }
