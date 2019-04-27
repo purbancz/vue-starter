@@ -1,31 +1,40 @@
 <template>
-	<div>
+	<div v-if="log == false">
 		<h1>Witaj w systemie do zapisów na zajęcia</h1>
 		<p>Zaloguj się emailem <input type="email" v-model="email">
 		<button @click="login()">Wchodzę</button></p>
+		
+		
+	</div>
+	<div v-else>
 		<h1>Witaj {{ email }}</h1>
-		<a href="#"  @click="logout()">Wyloguj</a>
+		<a href=""  @click="logout()">Wyloguj</a>
 	</div>
 </template>
 
 <script>
 
+import "milligram";
 
 
 export default {
 	data() {
 		  return {
 		    email: '',
-		    password: ''
+		    password: '',
+		    log: false
 		  };
 	},
 	methods: {
-		  alertMyEmail() {
-		    alert(this.email);
-		  },
-		  login() {
-			  document.write("<h1>Witaj " + this.email + "</h1>");
-			  }
+		alertMyEmail() {
+			alert(this.email);
+		},
+		login() {
+			this.log = true;
+		},
+		logout() {
+			this.log = false;
+		},
 	}
 	
 }
