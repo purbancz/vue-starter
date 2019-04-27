@@ -13,6 +13,7 @@ export default {
          email: ''
      }
  },
+  props: ['buttonLabel'],
  
  computed: {
 	  buttonLabelToDisplay() {
@@ -26,6 +27,6 @@ export default {
      },
      
  },
- props: ['buttonLabel']
+
 }
 </script>

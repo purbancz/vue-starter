@@ -7,10 +7,10 @@
 		<login-form @login="logMeIn($event)" ></login-form>
 	</div>
 	<div v-else>
-		<h1>Witaj, {{ authenticatedUsername }}</h1>
+		<!-- <h1>Witaj, {{ email }}</h1> -->
 		<!-- <a @click="logMeOut()">Wyloguj</a> -->
 		
-		<logged-in logout="logMeOut()"></logged-in>
+		<logged-in @logout="logMeOut()" :xyz="email"></logged-in>
 		
 	</div>
 </template>
@@ -41,7 +41,7 @@ export default {
 		
 		logMeIn(username) {
 			this.isAuthenticated = true;
-			this.authenticatedUsername = username;
+			this.email = username;
 			}
 	}
 	
