@@ -1,6 +1,6 @@
 <template>
    <div>
-       <h1>Witaj, {{ xyz }}</h1>
+       <h1>Witaj, {{ username }}</h1>
 		<a @click="getOut()">Wyloguj</a>
    </div>
 </template>
@@ -17,6 +17,6 @@ export default {
      
  },
  
- props: ['xyz']
+ props: ['username']
 }
 </script>

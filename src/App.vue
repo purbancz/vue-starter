@@ -10,7 +10,7 @@
 		<!-- <h1>Witaj, {{ email }}</h1> -->
 		<!-- <a @click="logMeOut()">Wyloguj</a> -->
 		
-		<logged-in @logout="logMeOut()" :xyz="email"></logged-in>
+		<logged-in @logout="logMeOut()" :username="email"></logged-in>
 		
 	</div>
 </template>
